@@ -1,7 +1,13 @@
 #include<stdio.h>
+void test(){
+    printf("this is func \"test\"");
+};
+int sum(int a,int b){
+    return a+b;
+};
 int main() {
-    printf("hello");
-    printf("hello");
-    printf("hello");
+
+printf("%d\n",sum(14,15));
+test();
     return 0;
 }
