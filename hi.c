@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include<stdlib.h>
 void test()
 {
     printf("this is func \"test\"");
@@ -27,6 +28,7 @@ char *electronicScreen(char *s)
 {
     int i = 0;
     char *result;
+    // free(result);
     int count = 0;
     char  numberzer[] = "01011111",
             numberone[] = "00000101",
@@ -38,9 +40,9 @@ char *electronicScreen(char *s)
             numbersev[] = "01000101",
             numbereig[] = "01111111",
             numbernin[] = "01111101";
+    char* temp =(char*)calloc(9,sizeof(char));
     while (*(s + i) != NULL)
     {
-        char* temp;
         for (int j = 0; j < 8; j++){
             *(temp + j) = *(s + i + j);
         }
@@ -115,21 +117,21 @@ char *electronicScreen(char *s)
             count++;
             continue;
         }
+        
     }
+    free(temp);
     count++;
     *(result + count) = NULL;
     return result;
 }
 int main()
 {
-    // char *s = electronicScreen("00000101");
-    // int i = 0;
-    // while (*(s + i) != NULL)
-    // {
-    //     printf("%c", *(s + i));
-    //     i++;
-    // }
-    char *s="tra\0";
-    printf("%c",*(s+4));
+    char *s = electronicScreen("00000101");
+    int i = 0;
+    while (*(s + i) != NULL)
+    {
+        printf("%c", *(s + i));
+        i++;
+    }
     return 0;
 }
